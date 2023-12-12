@@ -8,8 +8,8 @@ WORKDIR /app
 COPY . /app
 
 # 升级pip并安装Python依赖项
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple && \
+    pip install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 迁移数据库（根据需要执行）
 RUN python manage.py makemigrations && \
@@ -23,4 +23,4 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # 启动Django应用
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "clipboard.wsgi:application", "--workers=3 --threads=3 --worker-connections=1000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers=3", "--threads=3", "--worker-connections=1000", "clipboard.wsgi:application"]

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>登录</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+<form id="loginForm">
+    <h2>登录</h2>
+    <input type="text" id="username" placeholder="用户名">
+    <input type="password" id="password" placeholder="密码">
+    <button type="submit">登录</button>
+</form>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        handleLogin();
+    });
+
+    function handleLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        fetch('/api/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({username: username, password: password})
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.access) {
+                    localStorage.setItem('token', data.access);
+                    window.location.href = '/'; // Redirect to text page
+                } else {
+                    alert('登录失败');
+                }
+            });
+    }
+</script>
+</body>
+</html>

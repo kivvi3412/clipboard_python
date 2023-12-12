@@ -1,0 +1,133 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+#container {
+    box-sizing: border-box;
+    width: 80%;
+    max-width: 1600px;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #3871E0;
+    border-radius: 5px;
+    background: white;
+}
+
+textarea, .upload-area {
+    box-sizing: border-box;
+    width: calc(100% - 42px);
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid #3871E0;
+    border-radius: 5px;
+    outline: none;
+}
+
+textarea {
+    height: 300px;
+    resize: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: white;
+    color: #3871E0;
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #F7F9FF;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.file-actions button {
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+
+#loginForm {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px; /* 限制最大宽度 */
+    padding: 20px;
+    border: 1px solid #3871E0;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#loginForm input[type="text"]:focus,
+#loginForm input[type="password"]:focus {
+    border-color: #3871E0;
+}
+
+#loginForm button {
+    cursor: pointer;
+    background-color: #3871E0;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#loginForm button:hover {
+    background-color: #3057d5;
+}
+
+.upload-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-area #fileInput {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.upload-area button {
+    background-color: #4CAF50; /* 绿色 */
+    color: white;
+    max-width: 15%;
+    flex-shrink: 1; /* 允许在必要时缩小按钮的宽度 */
+}

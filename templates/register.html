@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>注册</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+<form id="registrationForm">
+    <h2>注册</h2>
+    <input type="text" id="username" placeholder="用户名">
+    <input type="password" id="password" placeholder="密码">
+    <button type="submit">注册</button>
+    <div id="message"></div> <!-- 用于显示注册信息 -->
+</form>
+<script>
+    document.getElementById('registrationForm').onsubmit = function (event) {
+        event.preventDefault(); // 阻止表单的默认提交行为
+
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        fetch('/api/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({username: username, password: password})
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('message').textContent = data.error;
+                } else {
+                    document.getElementById('message').textContent = data.message;
+                    setTimeout(function () {
+                        window.location.href = '/'; // 修改为您的登录页面URL
+                    }, 2000); // 2秒后跳转
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    };
+</script>
+</body>
+</html>

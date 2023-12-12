@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="{% static 'scripts.js' %}" defer></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>保存文本和上传文件</title>
+</head>
+<body>
+<div id="container">
+    <h2>保存文本</h2>
+    <textarea id="text" placeholder="在这里输入文本" oninput="onTextInput()"></textarea>
+
+    <h2>上传文件</h2>
+    <div class="upload-area">
+        <input type="file" id="fileInput">
+        <button onclick="uploadFile()">上传文件</button>
+    </div>
+
+
+    <h2>文件列表</h2>
+    <ul id="fileList"></ul>
+</div>
+</body>
+</html>

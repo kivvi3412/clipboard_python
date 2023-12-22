@@ -1,5 +1,5 @@
 ### 潜在问题
-- 暂时使用debug=true否则无法加载静态文件
+- 暂时使用debug=false否则无法加载静态文件
 - 使用以下代码会定期卡死
     ```bash
     gunicorn --bind 127.0.0.1:8000 clipboard.wsgi:application
